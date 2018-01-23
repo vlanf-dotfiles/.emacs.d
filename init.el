@@ -1,91 +1,112 @@
-﻿;; packages
-(setq package-archives
-      '(("gnu" . "http://elpa.gnu.org/packages/")
-        ;("marmalade" . "https://marmalade-repo.org/packages/")
-        ("melpa" . "http://melpa.org/packages/")))
+;; packages
+(package-initialize)
 
 (require 'package)
-(package-initialize)
-;(package-refresh-contents)
+(add-to-list 'package-archives
+			 '("melpa" . "http://melpa.org/packages/") t)
 
-(setq my-packages
-	   '(
-		 color-theme-sanityinc-tomorrow
-		 highlight-indent-guides
-		 ))
+;(add-to-list 'load-path "~/.emacs.d/packages/")
+ 
+;(setq my-packages
+;	   '(
+;		 color-theme-sanityinc-tomorrow
+;		 highlight-indent-guides
+;		 magit
+;		 ))
 
-(dolist (pkg my-packages)
-  (unless (package-installed-p pkg)
-    (package-install pkg)))
+;(dolist (pkg my-packages)
+ ; (unless (package-installed-p pkg)
+  ;  (package-install pkg)))
+
 
 ;; credentials
-(setq user-full-name "Nefyodov VE")
+(setq user-full-name "NVE")
 (setq user-mail-address "nefyodovve@gmail.com")
 
-;; highlight-indentation
-;(setq highlight-indent-guides-method 'column)
-;(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-
-;; Global-set-key
-(global-set-key (kbd "M-p") (lambda () (interactive) (previous-line 4))) 
-(global-set-key (kbd "M-n") (lambda () (interactive) (forward-line 4))) 
-
 ;; ui
-(tool-bar-mode -1)
+(tool-bar-mode -1) 
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
-(setq visible-bell t) ;; Error sound  window blinking
+(setq visible-bell t)
 (setq inhibit-startup-screen t)
-(setq frame-title-format "emacs %b")
+(setq frame-title-format "GNU Emacs [%b]")
+(setq initial-scratch-message "")
+
+;; global-set-key
+(global-set-key (kbd "C-<tab>") 'completion-at-point)
+(global-set-key (kbd "C-.") 'other-window)
+(global-set-key (kbd "C-,") 'switch-to-buffer)
+(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "S-C-<down>") 'shrink-window)
+(global-set-key (kbd "S-C-<up>") 'enlarge-window)
+(global-set-key (kbd "C-x C-b") 'ibuffer-other-window)
+(global-set-key (kbd "C-M->") 'scroll-left)
+(global-set-key (kbd "C-M-<") 'scroll-right)
+
+(global-set-key "\M-n"  (lambda () (interactive) (scroll-up   4)) )
+(global-set-key "\M-p"  (lambda () (interactive) (scroll-down 4)) )
+
+(global-set-key [C-wheel-up]  'text-scale-increase)
+(global-set-key  [C-wheel-down] 'text-scale-decrease)
+
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
 
 ;; modes
-(global-hl-line-mode 1) ;; Highlight current line
+;;(global-hl-line-mode 1) ;; Highlight current line
 (column-number-mode 1)
-(size-indication-mode 1) ;; Size of buffer
-(show-paren-mode 1) ;; Show parentheses
-(display-time-mode 1)
+(size-indication-mode 1)
+(show-paren-mode 1)
+(display-time-mode 1) 
 (setq display-time-24hr-format t)
+(delete-selection-mode 1)
+;; (auto-revert-mode 1)
+(add-hook 'prog-mode-hook 'linum-mode)
 
-(add-hook 'prog-mode-hook 'linum-mode) ;; Line number mode for prog-modes
+;;Zooming with linum bugfix
 (eval-after-load "linum"
-  '(set-face-attribute 'linum nil :height 100)) ;; Zooming with linum bugfix
+  '(set-face-attribute 'linum nil :height 100))
 
-;; encodings
+;; encoding
 (prefer-coding-system 'utf-8-dos)
-
-;(global-set-key (kbd "C-x C-b") 'ibuffer)
-;(autoload 'ibuffer "ibuffer" "List buffers." t)
-
-;; registers
-(set-register ?i '(file . "~/.emacs.d/init.el")) ;; init.el by C-x r j i
+(add-hook 'shell-mode-hook
+		  (lambda () (set-buffer-process-coding-system
+					  'windows-1251 'windows-1251)))
 
 ;; defaults
 (setq default-input-method 'russian-computer)
+(setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
 (setq default-directory "~/Documents/") ;; for open file
-(setq-default tab-width 4) ;; Таб - 4 пробела
-(setq backup-directory-alist `(("." . "~/.emacs.d/saves"))) 
+(setq-default tab-width 4)
+(setq tab-stop-list '(4 8 12))
 
-;; scroll
-;(setq scroll-step 1)
-(setq scroll-conservatively 9999) ;; Плавная прокрутка
-;(setq scroll-margin 2)
+;; undisable
+(put 'narrow-to-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+(put 'erase-buffer 'disabled nil)
+(put 'scroll-left 'disabled nil)
 
-
-;;----------------------------------------------------------------------
+;; misc
+(setq sentence-end-double-space nil)
+(setq read-buffer-completion-ignore-case t)
+(setq blink-cursor-blinks 5)			; 0 for forever
+(setq scroll-conservatively 9999)
+;;(setq line-number-display-limit 10000)
+(setq next-screen-context-lines 4)
+(setq remember-notes-initial-major-mode 'outline-mode)
+(fset 'yes-or-no-p 'y-or-n-p)
+;;--------------------------------------------------------------------
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-	("1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" default)))
- '(package-selected-packages
-   (quote
-	(minimap highlight-indent-guides color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized))))
-
-(load-theme 'sanityinc-tomorrow-bright)
+ '(custom-enabled-themes (quote (tango-dark))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
