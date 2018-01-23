@@ -53,10 +53,18 @@
 (global-set-key (kbd "C-M->") 'scroll-left)
 (global-set-key (kbd "C-M-<") 'scroll-right)
 
+(global-set-key "\M-n"  (lambda () (interactive) (scroll-up   4)) )
+(global-set-key "\M-p"  (lambda () (interactive) (scroll-down 4)) )
+
+(global-set-key [C-wheel-up]  'text-scale-increase)
+(global-set-key  [C-wheel-down] 'text-scale-decrease)
+
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
+
+(global-set-key (kbd "C-x g") 'magit-status)
 
 ;; modes
 ;;(global-hl-line-mode 1) ;; Highlight current line
