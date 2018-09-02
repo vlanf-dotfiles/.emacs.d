@@ -43,8 +43,7 @@
 
 ;; global-set-key
 (global-set-key (kbd "C-<tab>") 'completion-at-point)
-(global-set-key (kbd "C-.") 'other-window)
-(global-set-key (kbd "C-,") 'switch-to-buffer)
+(global-set-key (kbd "C-t") 'other-window)
 (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
 (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
@@ -52,9 +51,9 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer-other-window)
 (global-set-key (kbd "C-M->") 'scroll-left)
 (global-set-key (kbd "C-M-<") 'scroll-right)
-
-(global-set-key "\M-n"  (lambda () (interactive) (scroll-up   4)) )
-(global-set-key "\M-p"  (lambda () (interactive) (scroll-down 4)) )
+(global-set-key (kbd "C-v") (lambda () (interactive) (scroll-up-command 8)) )
+(global-set-key (kbd "M-v") (lambda () (interactive) (scroll-down-command 8)) )
+(global-set-key (kbd "C-M-v") (lambda () (interactive) (scroll-other-window 8)) )
 
 (global-set-key [C-wheel-up]  'text-scale-increase)
 (global-set-key  [C-wheel-down] 'text-scale-decrease)
@@ -94,6 +93,10 @@
 (setq-default tab-width 4)
 (setq tab-stop-list '(4 8 12))
 
+(setq-default c-backspace-function 'backward-delete-char)
+(setq-default c-basic-offset 4)
+(setq-default c-default-style "linux")
+
 ;; undisable
 (put 'narrow-to-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
@@ -105,9 +108,10 @@
 (setq sentence-end-double-space nil)
 (setq read-buffer-completion-ignore-case t)
 (setq blink-cursor-blinks 5)			; 0 for forever
-(setq scroll-conservatively 9999)
+(setq scroll-conservatively 5)
+(setq scroll-margin 2)
 ;;(setq line-number-display-limit 10000)
-(setq next-screen-context-lines 4)
+(setq next-screen-context-lines 2)
 (setq remember-notes-initial-major-mode 'outline-mode)
 (fset 'yes-or-no-p 'y-or-n-p)
 
