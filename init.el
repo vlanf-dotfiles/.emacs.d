@@ -5,7 +5,7 @@
 ;;(add-to-list 'package-archives
 ;;			 '("melpa" . "http://melpa.org/packages/") t)
 
-;;(add-to-list 'load-path "~/.emacs.d/packages/")
+(add-to-list 'load-path "~/.emacs.d/packages/")
  
 ;;(setq my-packages
 ;; 	   '(
@@ -45,10 +45,10 @@
 (global-set-key (kbd "C-<tab>") 'completion-at-point)
 (global-set-key (kbd "C-t") 'other-window)
 (global-set-key (kbd "M-t") 'switch-to-buffer)
-(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
-(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
-(global-set-key (kbd "S-C-<down>") 'shrink-window)
-(global-set-key (kbd "S-C-<up>") 'enlarge-window)
+(global-set-key (kbd "S-C-M-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "S-C-M-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "S-C-M-<down>") 'shrink-window)
+(global-set-key (kbd "S-C-M-<up>") 'enlarge-window)
 (global-set-key (kbd "C-x C-b") 'ibuffer-other-window)
 (global-set-key (kbd "C-M->") 'scroll-left)
 (global-set-key (kbd "C-M-<") 'scroll-right)
