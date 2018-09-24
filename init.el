@@ -1,49 +1,50 @@
 ;; packages
 (package-initialize)
 
-(require 'package)
-(add-to-list 'package-archives
-			 '("melpa" . "http://melpa.org/packages/") t)
+;;(require 'package)
+;;(add-to-list 'package-archives
+;;			 '("melpa" . "http://melpa.org/packages/") t)
 
-(add-to-list 'load-path "~/.emacs.d/packages/")
+;;(add-to-list 'load-path "~/.emacs.d/packages/")
  
-(setq my-packages
-	   '(
-		 color-theme-sanityinc-tomorrow
-		 highlight-indent-guides
-		 magit
-		 ))
+;;(setq my-packages
+;; 	   '(
+;; 		 color-theme-sanityinc-tomorrow
+;; 		 highlight-indent-guides
+;; 		 magit
+;; 		 ))
 
-(dolist (pkg my-packages)
-  (unless (package-installed-p pkg)
-    (package-install pkg)))
+;; (dolist (pkg my-packages)
+;;   (unless (package-installed-p pkg)
+;;     (package-install pkg)))
 
 
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+;; (require 'web-mode)
+;; (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 
 ;; credentials
-(setq user-full-name "NVE")
+(setq user-full-name "Vladimir Nefyodov")
 (setq user-mail-address "nefyodovve@gmail.com")
 
 ;; ui
 (tool-bar-mode -1) 
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
-(setq visible-bell t)
+;;(setq visible-bell t)
 (setq inhibit-startup-screen t)
-(setq frame-title-format "GNU Emacs [%b]")
-(setq initial-scratch-message "")
+;;(setq frame-title-format "GNU Emacs [%b]")
+;;(setq initial-scratch-message "")
 
 ;; global-set-key
 (global-set-key (kbd "C-<tab>") 'completion-at-point)
 (global-set-key (kbd "C-t") 'other-window)
+(global-set-key (kbd "M-t") 'switch-to-buffer)
 (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
 (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
@@ -67,6 +68,7 @@
 
 ;; modes
 ;;(global-hl-line-mode 1) ;; Highlight current line
+(line-number-mode 1)
 (column-number-mode 1)
 (size-indication-mode 1)
 (show-paren-mode 1)
@@ -74,22 +76,22 @@
 (setq display-time-24hr-format t)
 (delete-selection-mode 1)
 ;; (auto-revert-mode 1)
-(add-hook 'prog-mode-hook 'linum-mode)
+;;(add-hook 'prog-mode-hook 'linum-mode)
 
 ;;Zooming with linum bugfix
-(eval-after-load "linum"
-  '(set-face-attribute 'linum nil :height 100))
+;;(eval-after-load "linum"
+;;  '(set-face-attribute 'linum nil :height 100))
 
 ;; encoding
-(prefer-coding-system 'utf-8-dos)
-(add-hook 'shell-mode-hook
-		  (lambda () (set-buffer-process-coding-system
-					  'windows-1251 'windows-1251)))
+;;(prefer-coding-system 'utf-8-dos)
+;;(add-hook 'shell-mode-hook
+;;		  (lambda () (set-buffer-process-coding-system
+;;					  'windows-1251 'windows-1251)))
 
 ;; defaults
 (setq default-input-method 'russian-computer)
 (setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
-(setq default-directory "~/Documents/") ;; for open file
+;;(setq default-directory "~/Documents/") ;; for open file
 (setq-default tab-width 4)
 (setq tab-stop-list '(4 8 12))
 
@@ -107,8 +109,9 @@
 ;; misc
 (setq sentence-end-double-space nil)
 (setq read-buffer-completion-ignore-case t)
-(setq blink-cursor-blinks 5)			; 0 for forever
-(setq scroll-conservatively 5)
+(blink-cursor-mode 0)
+;;(setq blink-cursor-blinks 5)			; 0 for forever
+(setq scroll-conservatively 9999)
 (setq scroll-margin 2)
 ;;(setq line-number-display-limit 10000)
 (setq next-screen-context-lines 2)
@@ -122,7 +125,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (tango-dark))))
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   ["#2e3436" "#a40000" "#4e9a06" "#c4a000" "#204a87" "#5c3566" "#729fcf" "#eeeeec"])
+ '(custom-enabled-themes (quote (deeper-blue))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
