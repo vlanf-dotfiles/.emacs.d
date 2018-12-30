@@ -1,0 +1,15 @@
+(when (display-graphic-p)
+	(progn
+	  (tool-bar-mode -1) 
+	  (menu-bar-mode -1)
+	  (scroll-bar-mode -1)))
+(line-number-mode 1)
+(column-number-mode 1)
+(size-indication-mode 1)
+(show-paren-mode 1)
+(display-time-mode 1)
+(delete-selection-mode 1)
+;; (auto-revert-mode 1)
+(linum-mode 1)
+
+(provide 'setup-modes)
