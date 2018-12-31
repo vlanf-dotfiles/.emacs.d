@@ -22,6 +22,7 @@
 (setq display-time-24hr-format t)
 (setq default-input-method 'russian-computer)
 (setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
+(setq visible-bell 1)
 
 (setq-default tab-width 4)
 (setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40))
@@ -66,6 +67,3 @@
 (add-hook 'prog-mode-hook 'linum-mode)
 
 (provide 'setup-common)
-
-
-
