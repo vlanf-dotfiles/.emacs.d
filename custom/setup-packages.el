@@ -15,10 +15,12 @@
 (use-package magit
   :bind ("C-x g" . 'magit-status))
 
-;; (use-package projectile
-;;   :hook prog-mode)
-(use-package monokai-theme
-  :config
-  (load-theme 'monokai t))
+(use-package projectile)
+
+(unless (eq system-type 'windows-nt)
+	(use-package monokai-theme))
+;;(use-package monokai-theme)
+  ;; :config
+  ;; (load-theme 'monokai t))
 
 (provide 'setup-packages)
