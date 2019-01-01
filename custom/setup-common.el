@@ -1,5 +1,3 @@
-(setq inhibit-startup-screen t)
-
 (global-set-key (kbd "C-<tab>") 'completion-at-point)
 (global-set-key (kbd "M-o") 'other-window)
 (global-set-key (kbd "C-.") 'other-window)
@@ -19,51 +17,52 @@
 (global-set-key  [C-wheel-down] 'text-scale-decrease)
 (global-set-key [C-mouse-5]  'text-scale-decrease)
 
-(setq display-time-24hr-format t)
-(setq default-input-method 'russian-computer)
-(setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
-(setq visible-bell 1)
+(setq-default tab-width 4
+			  c-backspace-function 'backward-delete-char
+			  c-basic-offset 4
+			  c-default-style "linux")
 
-(setq-default tab-width 4)
-(setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40))
-
-(setq-default c-backspace-function 'backward-delete-char)
-(setq-default c-basic-offset 4)
-(setq-default c-default-style "linux")
-
-;; undisable
-(put 'narrow-to-region 'disabled nil)
-(put 'upcase-region 'disabled nil)
-(put 'downcase-region 'disabled nil)
-(put 'erase-buffer 'disabled nil)
-(put 'scroll-left 'disabled nil)
-
-;; misc
-(setq sentence-end-double-space nil)
-(setq read-buffer-completion-ignore-case t)
-(blink-cursor-mode 0)
-;;(setq blink-cursor-blinks 5)			; 0 for forever
-(setq scroll-conservatively 9999)
-(setq scroll-margin 2)
-;;(setq line-number-display-limit 10000)
-(setq next-screen-context-lines 2)
+(setq display-time-24hr-format t
+	  default-input-method 'russian-computer
+	  backup-directory-alist `(("." . "~/.emacs.d/saves"))
+	  visible-bell 1
+	  inhibit-startup-screen t
+	  tab-stop-list '(4 8 12 16 20 24 28 32 36 40)
+	  sentence-end-double-space nil
+	  read-buffer-completion-ignore-case t
+	  ;; blink-cursor-blinks 5			; 0 for forever
+	  scroll-conservatively 9999
+	  scroll-margin 2
+	  ;; line-number-display-limit 10000
+	  next-screen-context-lines 2
+	  global-mark-ring-max 5000
+	  kill-ring-max 5000
+	  )
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
-(setq global-mark-ring-max 5000
-      kill-ring-max 5000)
-
 (when (display-graphic-p)
 	(progn
-	  (tool-bar-mode -1) 
+	  (tool-bar-mode -1)
 	  (menu-bar-mode -1)
 	  (scroll-bar-mode -1)))
+(blink-cursor-mode 0)
 (line-number-mode 1)
 (column-number-mode 1)
 (size-indication-mode 1)
 (show-paren-mode 1)
 (display-time-mode 1)
 (delete-selection-mode 1)
-(add-hook 'prog-mode-hook 'linum-mode)
+(add-hook 'prog-mode-hook (if (>= emacs-major-version 26)
+							  'display-line-numbers-mode
+							'linum-mode))
+
+
+(put 'narrow-to-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+(put 'erase-buffer 'disabled nil)
+(put 'scroll-left 'disabled nil)
 
 (provide 'setup-common)
+
