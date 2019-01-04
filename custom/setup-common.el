@@ -1,5 +1,6 @@
 (global-set-key (kbd "C-<tab>") 'completion-at-point)
 (global-set-key (kbd "M-o") 'other-window)
+(global-set-key (kbd "M-O") (lambda () (interactive) (other-window -1)) )
 (global-set-key (kbd "C-.") 'other-window)
 (global-set-key (kbd "C-,") 'switch-to-buffer)
 (global-set-key (kbd "S-C-M-<left>") 'shrink-window-horizontally)
@@ -32,7 +33,7 @@
 	  read-buffer-completion-ignore-case t
 	  ;; blink-cursor-blinks 5			; 0 for forever
 	  scroll-conservatively 9999
-	  scroll-margin 2
+	  scroll-margin 1
 	  ;; line-number-display-limit 10000
 	  next-screen-context-lines 2
 	  global-mark-ring-max 5000
@@ -57,6 +58,9 @@
 							  'display-line-numbers-mode
 							'linum-mode))
 
+(add-hook 'prog-mode-hook
+          (lambda () (interactive)
+			(setq show-trailing-whitespace 1)))
 
 (put 'narrow-to-region 'disabled nil)
 (put 'upcase-region 'disabled nil)

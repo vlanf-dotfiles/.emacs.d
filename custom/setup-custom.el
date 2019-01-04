@@ -23,4 +23,16 @@ point reaches the beginning or end of the buffer, stop there."
 
 (global-set-key (kbd "C-a") 'prelude-move-beginning-of-line)
 
+;; For an non-intrusive but still noticeable visual bell, you can
+;; flash the foreground of a face. This is similar to the above screen
+;; flashing, but subtly flashes only the mode line foreground, and
+;; does not require lexical binding:
+
+(setq ring-bell-function
+      (lambda ()
+        (let ((orig-fg (face-foreground 'mode-line)))
+          (set-face-foreground 'mode-line "#F2804F")
+          (run-with-idle-timer 0.1 nil
+                               (lambda (fg) (set-face-foreground 'mode-line fg))
+                               orig-fg))))
 (provide 'setup-custom)
