@@ -15,7 +15,7 @@
 
 (require 'setup-common)
 (require 'setup-packages)
-(require 'setup-helm)
+;;(require 'setup-helm)
 (require 'setup-custom)
 (require 'header)						; 42 school header
 
@@ -26,7 +26,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-	(diminish helm-themes heroku-theme cherry-blossom-theme ample-zen-theme ample-zen color-theme-sanityinc-tomorrow color-theme-synityinc-tomorrow colkor-theme-synityinc-tomorrow cypebpunk-theme cypebpunk use-package monokai-theme markdown-mode magit helm-swoop helm-projectile helm-gtags flycheck company-c-headers buffer-move avy autothemer))))
+	(counsel swiper ivy disaster diminish helm-themes heroku-theme cherry-blossom-theme ample-zen-theme ample-zen color-theme-sanityinc-tomorrow color-theme-synityinc-tomorrow colkor-theme-synityinc-tomorrow cypebpunk-theme cypebpunk use-package monokai-theme markdown-mode magit helm-swoop helm-projectile helm-gtags flycheck company-c-headers buffer-move avy autothemer))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
