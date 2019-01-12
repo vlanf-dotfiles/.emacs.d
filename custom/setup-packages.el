@@ -9,10 +9,10 @@
   (load-theme 'sanityinc-tomorrow-night t))
 
 (use-package buffer-move
-  :bind (("<C-S-up>"	.'buf-move-up)
-		 ("<C-S-down>"	.'buf-move-down)
-		 ("<C-S-left>"	.'buf-move-left)
-		 ("<C-S-right>"	.'buf-move-right)))
+  :bind (("<C-S-up>"	. 'buf-move-up)
+		 ("<C-S-down>"	. 'buf-move-down)
+		 ("<C-S-left>"	. 'buf-move-left)
+		 ("<C-S-right>"	. 'buf-move-right)))
 
 (use-package flycheck
   :disabled
@@ -35,6 +35,7 @@
   :bind ("C-x g" . 'magit-status))
 
 (use-package ivy
+  :bind ("C-x b" . 'ivy-switch-buffer)
   :config
   (setq ivy-use-selectable-prompt t))
 
@@ -42,11 +43,10 @@
   :bind ("C-s" . 'swiper))
 
 (use-package counsel
-  :bind (("M-x"		.'counsel-M-x)
-		 ("C-x b"	.'counsel-ibuffer)
-		 ("C-x C-f"	.'counsel-find-file)
-		 ("C-h f"	.'counsel-describe-function)
-		 ("C-h v"	.'counsel-describe-variable)
-		 ("C-h u"	.'counsel-unicode-char)))
+  :bind (("M-x"		. 'counsel-M-x)
+		 ("C-x C-f"	. 'counsel-find-file)
+		 ("C-h f"	. 'counsel-describe-function)
+		 ("C-h v"	. 'counsel-describe-variable)
+		 ("C-h u"	. 'counsel-unicode-char)))
 
 (provide 'setup-packages)
