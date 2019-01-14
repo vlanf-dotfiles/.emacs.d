@@ -1,12 +1,15 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
-;; (setq use-package-verbose t)
+(setq use-package-verbose t)
 
 (use-package diminish)
 
 (use-package color-theme-sanityinc-tomorrow
+  :disabled
   :config
-  (load-theme 'sanityinc-tomorrow-night t))
+  (load-theme 'sanityinc-tomorrow-night t)
+  ;; (load-theme 'sanityinc-tomorrow-bright t)
+  )
 
 (use-package buffer-move
   :bind (("<C-S-up>"	. 'buf-move-up)
