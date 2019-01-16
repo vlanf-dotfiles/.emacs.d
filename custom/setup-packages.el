@@ -5,7 +5,6 @@
 (use-package diminish)
 
 (use-package color-theme-sanityinc-tomorrow
-  :disabled
   :config
   (load-theme 'sanityinc-tomorrow-night t)
   ;; (load-theme 'sanityinc-tomorrow-bright t)
