@@ -35,4 +35,15 @@ point reaches the beginning or end of the buffer, stop there."
           (run-with-idle-timer 0.1 nil
                                (lambda (fg) (set-face-foreground 'mode-line fg))
                                orig-fg))))
+
+;; Colors for *compilation* buffer
+;; https://stackoverflow.com/questions/13397737/ansi-coloring-in-compilation-mode
+
+(require 'ansi-color)
+(defun colorize-compilation-buffer ()
+  (toggle-read-only)
+  (ansi-color-apply-on-region compilation-filter-start (point))
+  (toggle-read-only))
+(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+
 (provide 'setup-custom)

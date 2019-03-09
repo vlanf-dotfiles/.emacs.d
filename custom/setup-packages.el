@@ -6,8 +6,8 @@
 
 (use-package color-theme-sanityinc-tomorrow
   :config
-  (load-theme 'sanityinc-tomorrow-night t)
-  ;; (load-theme 'sanityinc-tomorrow-bright t)
+  ;; (load-theme 'sanityinc-tomorrow-night t)
+  (load-theme 'sanityinc-tomorrow-bright t)
   )
 
 (use-package buffer-move
@@ -42,6 +42,7 @@
   (setq ivy-use-selectable-prompt t))
 
 (use-package swiper
+  :disabled
   :bind ("C-s" . 'swiper))
 
 (use-package counsel
@@ -50,5 +51,13 @@
 		 ("C-h f"	. 'counsel-describe-function)
 		 ("C-h v"	. 'counsel-describe-variable)
 		 ("C-h u"	. 'counsel-unicode-char)))
+
+(use-package php-mode
+  :disabled)
+
+(use-package projectile
+  :bind ("C-c p" . 'projectile-command-map)
+  :config
+  (setq projectile-completion-system 'ivy))
 
 (provide 'setup-packages)

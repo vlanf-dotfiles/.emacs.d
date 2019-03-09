@@ -18,6 +18,9 @@
 (global-set-key [C-wheel-down]	'text-scale-decrease)
 (global-set-key [C-mouse-5]		'text-scale-decrease)
 
+(global-unset-key (kbd "<XF86Back>"))
+(global-unset-key (kbd "<XF86Forward>"))
+
 (setq-default tab-width 4
 			  c-backspace-function 'backward-delete-char
 			  c-basic-offset 4
@@ -57,12 +60,12 @@
 (add-hook 'prog-mode-hook (if (>= emacs-major-version 26)
 							  'display-line-numbers-mode
 							'linum-mode))
-(add-hook 'prog-mode-hook
-          (lambda () (interactive)
-			(setq show-trailing-whitespace 1)))
+;; (add-hook 'prog-mode-hook
+;;           (lambda () (interactive)
+;; 			(setq show-trailing-whitespace 1)))
 
-(semantic-mode 1)
-(global-semantic-idle-summary-mode 1)
+;; (semantic-mode 1)
+;; (global-semantic-idle-summary-mode 1)
 (add-hook 'semantic-mode-hook
 		  (lambda () (local-set-key (kbd "C-c , .")
 									'semantic-ia-fast-jump)))
