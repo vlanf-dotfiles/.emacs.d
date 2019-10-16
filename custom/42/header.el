@@ -22,7 +22,7 @@
 ;    By: login____ <mail_______@student.42.fr>      +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: yyyy/mm/dd 15:27:11 by login____         #+#    #+#              ;
-;    Updated: 2019/01/03 16:05:59 by gmelisan         ###   ########.fr        ;
+;    Updated: 2019/08/25 23:32:07 by gmelisan         ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -37,13 +37,14 @@
 
 
 
-(set 'user-mail (let ((mail (getenv "MAIL")))
-				   (if (string= mail nil)
-					   "gmelisan@student.42.fr"
-					 mail)
-				   )
-	 )
+;; (set 'user-mail (let ((mail (getenv "MAIL")))
+;; 				   (if (string= mail nil)
+;; 					   "gmelisan@student.42.fr"
+;; 					 mail)
+;; 				   )
+;; 	 )
 
+(set 'user-mail "gmelisan@student.42.fr")
 
 (set 'left-std-margin 5)
 (set 'right-std-margin 5)

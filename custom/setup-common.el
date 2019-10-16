@@ -1,3 +1,5 @@
+(add-to-list 'default-frame-alist '(font . "Noto Sans Mono 10"))
+
 (global-set-key (kbd "C-<tab>") 'completion-at-point)
 (global-set-key (kbd "M-o") 'other-window)
 (global-set-key (kbd "M-O") (lambda () (interactive) (other-window -1)) )
@@ -70,6 +72,7 @@
 		  (lambda () (local-set-key (kbd "C-c , .")
 									'semantic-ia-fast-jump)))
 
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 (put 'narrow-to-region 'disabled nil)
 (put 'upcase-region 'disabled nil)

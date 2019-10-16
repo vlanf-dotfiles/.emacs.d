@@ -52,8 +52,11 @@
 		 ("C-h v"	. 'counsel-describe-variable)
 		 ("C-h u"	. 'counsel-unicode-char)))
 
-(use-package php-mode
-  :disabled)
+(use-package php-mode)
+(use-package company-php)
+(use-package ac-php)
+
+(use-package web-mode)
 
 (use-package projectile
   :bind ("C-c p" . 'projectile-command-map)
