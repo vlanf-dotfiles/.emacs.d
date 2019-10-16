@@ -21,6 +21,14 @@
   :diminish
   :config
   (add-hook 'c-mode-common-hook 'flycheck-mode))
+(use-package cl
+  :disabled
+  :disabled)
+(use-package slime
+  :disabled
+  :config
+  (setq inferior-lisp-program "sbcl")
+  (setq slime-contribs '(slime-fancy)))
 
 (use-package company
   :diminish

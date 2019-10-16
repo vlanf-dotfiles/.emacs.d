@@ -1,4 +1,5 @@
-(add-to-list 'default-frame-alist '(font . "Noto Sans Mono 10"))
+(add-to-list 'default-frame-alist '(font . "Roboto Mono 10"))
+(setq default-directory "~/")
 
 (global-set-key (kbd "C-<tab>") 'completion-at-point)
 (global-set-key (kbd "M-o") 'other-window)
@@ -73,6 +74,8 @@
 									'semantic-ia-fast-jump)))
 
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+;; (if (string-equal system-type "windows-nt")
+;; 	(semantic-add-system-include "D:/MinGW/include" 'c-mode))
 
 (put 'narrow-to-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
