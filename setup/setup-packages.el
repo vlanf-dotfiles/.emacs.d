@@ -71,4 +71,10 @@
   :config
   (setq projectile-completion-system 'ivy))
 
+(use-package elpy
+  :ensure t
+  :init
+  (advice-add 'python-mode :before 'elpy-enable)
+  (setq elpy-rpc-python-command "/usr/bin/python3"))
+
 (provide 'setup-packages)

@@ -1,4 +1,4 @@
-(add-to-list 'default-frame-alist '(font . "Roboto Mono 10"))
+(add-to-list 'default-frame-alist '(font . "Roboto Mono 12"))
 (setq default-directory "~/")
 
 (global-set-key (kbd "C-<tab>") 'completion-at-point)
@@ -82,6 +82,8 @@
 (put 'downcase-region 'disabled nil)
 (put 'erase-buffer 'disabled nil)
 (put 'scroll-left 'disabled nil)
+
+(setq mouse-wheel-scroll-amount '(2 ((shift) . 1)))
 
 (provide 'setup-common)
 
