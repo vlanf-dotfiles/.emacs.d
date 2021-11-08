@@ -85,5 +85,12 @@
 
 (setq mouse-wheel-scroll-amount '(2 ((shift) . 1)))
 
+(defun create-tags (dir-name)
+  "Create tags file."
+  (interactive "DDirectory: ")
+  (eshell-command 
+   (format "find %s -type f -name \"*.[ch]\" | etags -" dir-name))
+  (message (format "Created %sTAGS" dir-name)))
+
 (provide 'setup-common)
 
