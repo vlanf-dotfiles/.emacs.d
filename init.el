@@ -1,21 +1,29 @@
+;; -*- lexical-binding: t; -*-
 (shell-command "git pull origin master")
 
-(require 'package)
+;; (add-to-list 'load-path "~/.emacs.d/init/")
 
-(add-to-list 'package-archives
-         '("melpa" . "http://melpa.org/packages/") t)
-(package-initialize)
 
-(add-to-list 'load-path "~/.emacs.d/setup/")
-(add-to-list 'load-path "~/.emacs.d/setup/42")
+(setq default-directory "~/.emacs.d/")
 
-(when (not package-archive-contents)
-    (package-refresh-contents))
+(add-to-list 'load-path "~/.emacs.d/init/42")
+(load-file "./init/42/header.el")
+(load-file "./init/init-common.el")
+(load-file "./init/init-packages.el")
+(load-file "./init/init-custom.el")
 
-(unless (package-installed-p 'use-package)
-	(package-install 'use-package))
+(setq default-directory "~/")
 
-(require 'setup-common)
-(require 'setup-packages)
-(require 'setup-custom)
-(require 'header)						; 42 school header
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(theme-buffet ef-themes mood-line dap-mode company-box lsp-ivy lsp-ui lsp-mode which-key catppuccin-theme flycheck projectile modus-themes magit diminish company-c-headers color-theme-sanityinc-tomorrow buffer-move)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
